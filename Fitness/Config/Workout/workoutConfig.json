@@ -1,0 +1,117 @@
+{
+  "workoutSections": [
+    {
+      "name": "aerobicExercises",
+      "workouts": [
+        {
+          "id": 0,
+          "name": "walking",
+          "usesLocation": true,
+          "usesDistance": false,
+          "metValue": 4.0,
+          "activityType": 52
+        },
+        {
+          "id": 5,
+          "name": "hiking",
+          "usesLocation": true,
+          "usesDistance": false,
+          "metValue": 6.5,
+          "activityType": 24
+        },
+        {
+          "id": 1,
+          "name": "running",
+          "usesLocation": true,
+          "usesDistance": false,
+          "metValue": 11.5,
+          "activityType": 37
+        },
+        {
+          "id": 2,
+          "name": "cycling",
+          "usesLocation": true,
+          "usesDistance": false,
+          "metValue": 8.0,
+          "activityType": 13
+        },
+        {
+          "id": 9,
+          "name": "skating",
+          "usesLocation": true,
+          "usesDistance": false,
+          "metValue": 4.0,
+          "activityType": 39
+        }
+      ]
+    },
+    {
+      "name": "anaerobicExercises",
+      "workouts": [
+        {
+          "id": 3,
+          "name": "intervalTraining",
+          "usesLocation": false,
+          "usesDistance": false,
+          "metValue": 7.5,
+          "activityType": 63
+        },
+        {
+          "id": 4,
+          "name": "strengthTraining",
+          "usesLocation": false,
+          "usesDistance": false,
+          "metValue": 5.5,
+          "activityType": 50
+        }
+      ]
+    },
+    {
+      "name": "waterActivities",
+      "workouts": [
+        {
+          "id": 6,
+          "name": "swimming",
+          "usesLocation": false,
+          "usesDistance": true,
+          "metValue": 5.8,
+          "activityType": 46
+        }
+      ]
+    },
+    {
+      "name": "winterActivities",
+      "workouts": [
+        {
+          "id": 10,
+          "name": "snowboarding",
+          "usesLocation": true,
+          "usesDistance": false,
+          "metValue": 5.0,
+          "activityType": 67
+        }
+      ]
+    },
+    {
+      "name": "martialArts",
+      "workouts": [
+        {
+          "id": 8,
+          "name": "boxing",
+          "usesLocation": false,
+          "usesDistance": false,
+          "metValue": 9.5,
+          "activityType": 8
+        },
+        {
+          "id": 7,
+          "name": "kickboxing",
+          "usesLocation": false,
+          "usesDistance": false,
+          "metValue": 9.5,
+          "activityType": 65
+        }
+      ]
+    }
+  ]
+}
