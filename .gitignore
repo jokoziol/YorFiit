@@ -1,0 +1,15 @@
+/shelf/
+/workspace.xml
+/httpRequests/
+/dataSources/
+xcuserdata/
+.idea/
+*.xcworkspace
+profile/
+xcshareddata/
+*.xcscmblueprint
+*.xccheckout
+*.xcuserstate
+*/build/*
+*.pbxuser
+/dataSources.local.xml

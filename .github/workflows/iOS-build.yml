@@ -1,0 +1,17 @@
+name: Latest iOS build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build
+        run: xcodebuild -project 'Fitness.xcodeproj' -scheme YorFiit -destination 'platform=iOS Simulator,OS=latest,name=iPhone 14 Pro Max' -configuration CODE_SIGNING_ALLOWED=NO
