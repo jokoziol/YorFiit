@@ -1,4 +1,4 @@
-name: iOS 16.0 build
+name: Latest iOS build
 
 on:
   push:
@@ -14,4 +14,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Build
-        run: xcodebuild -project 'Fitness.xcodeproj' -scheme YorFiit -destination 'platform=iOS Simulator,OS=16.0,name=iPhone 14 Pro Max' -configuration CODE_SIGNING_ALLOWED=NO
+        run: xcodebuild -project 'Fitness.xcodeproj' -scheme YorFiit -destination 'platform=iOS Simulator,OS=latest,name=iPhone 14 Pro Max' -configuration CODE_SIGNING_ALLOWED=NO
