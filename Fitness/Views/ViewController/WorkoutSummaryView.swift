@@ -84,17 +84,19 @@ struct WorkoutSummaryView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .onAppear {
 
-                        let group = DispatchGroup()
-                        group.enter()
+                        if self.workout.workoutId == nil {
+                            let group = DispatchGroup()
+                            group.enter()
 
-                        DispatchQueue.global().async {
-                            WorkoutInformation.persistTemporaryWorkout(workout, workoutCoordinates)
-                            group.leave()
-                        }
+                            DispatchQueue.global().async {
+                                WorkoutInformation.persistTemporaryWorkout(workout, workoutCoordinates)
+                                group.leave()
+                            }
 
-                        group.notify(queue: .main) {
-                            NotificationCenter.default.post(name: Notification.Name(rawValue: "refresh"), object: nil)
-                            LocationManager.shared.removeAll()
+                            group.notify(queue: .main) {
+                                NotificationCenter.default.post(name: Notification.Name(rawValue: "refresh"), object: nil)
+                                LocationManager.shared.removeAll()
+                            }
                         }
                     }
                     .interactiveDismissDisabled(workoutSaveInProgress)

@@ -189,7 +189,7 @@ class HealthStore {
         }
     }
 
-    class func getWorkoutActivityTypeType(workoutType: Int) -> HKWorkoutActivityType {
+    class func getWorkoutActivityTypeType(workoutType: String?) -> HKWorkoutActivityType {
         return HKWorkoutActivityType(rawValue: WorkoutType.getWorkout(type: workoutType)?.activityType ?? 3000) ?? .other
     }
 }

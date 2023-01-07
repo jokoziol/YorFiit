@@ -5,7 +5,7 @@ struct WorkoutItem: Identifiable, Hashable {
     let workoutId: String?
     let placeNames: String?
     let startDate: Date
-    let type: Int
+    let type: String?
     let timeInSeconds: Int
     let calories: Double
     let distanceInMeters: Double

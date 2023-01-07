@@ -156,7 +156,7 @@ struct StatisticsView: View {
         let group = DispatchGroup()
         group.enter()
 
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
 
             let workoutStore = WorkoutStore()
             workoutStore.load()

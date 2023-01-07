@@ -13,26 +13,27 @@ public struct CardGroup: View {
     public var body: some View {
 
         CardView {
+
             HStack {
-                Spacer().frame(width: ScreenConfig.itemSpacing, height: nil, alignment: .leading)
+                //Spacer().frame(width: ScreenConfig.itemSpacing, height: nil, alignment: .leading)
 
-                Text(itemTitle)
-                        .frame(width: ScreenConfig.itemCardWidth, height: nil, alignment: .leading)
-                        .padding(EdgeInsets(top: ScreenConfig.itemSpacing, leading: 0.0, bottom: ScreenConfig.itemSpacing, trailing: 0.0))
-                        .font(Font.title2.bold())
+                GeometryReader { proxy in
+                    Text(itemTitle)
+                            .frame(width: proxy.size.width, alignment: .leading)
+                            .padding(EdgeInsets(top: ScreenConfig.itemSpacing, leading: 0.0, bottom: 0.0, trailing: 0.0))
+                            .font(.caption)
+                }
 
-                Spacer().frame(width: ScreenConfig.itemSpacing, height: nil, alignment: .trailing)
+                //Spacer().frame(width: ScreenConfig.itemSpacing, height: nil, alignment: .trailing)
             }
 
+            Spacer().frame(height: ScreenConfig.itemSpacing * 2)
+
             HStack {
-                Spacer().frame(width: ScreenConfig.itemSpacing, height: nil, alignment: .leading)
-
                 Text(itemText)
-                        .frame(width: ScreenConfig.itemCardWidth, height: nil, alignment: .leading)
+                        .frame(alignment: .leading)
                         .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: ScreenConfig.itemSpacing, trailing: 0.0))
-                        .font(.body)
-
-                Spacer().frame(width: ScreenConfig.itemSpacing, height: nil, alignment: .trailing)
+                        .font(.title)
             }
         }
     }

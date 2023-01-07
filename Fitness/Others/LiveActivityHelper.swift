@@ -9,10 +9,8 @@ class LiveActivityHelper {
 
     public static func startWorkoutActivity(_ workoutName: String) {
 
-        workoutStartDate = Date()
-
         let attributes: WorkoutLiveTrackerAttributes = WorkoutLiveTrackerAttributes(name: workoutName)
-        let state: WorkoutLiveTrackerAttributes.ContentState = WorkoutLiveTrackerAttributes.ContentState(startDate: workoutStartDate)
+        let state: WorkoutLiveTrackerAttributes.ContentState = WorkoutLiveTrackerAttributes.ContentState(timeString: "")
 
         do {
             workoutActivity = try Activity<WorkoutLiveTrackerAttributes>.request(attributes: attributes, contentState: state, pushType: nil)
@@ -21,8 +19,8 @@ class LiveActivityHelper {
         }
     }
 
-    public static func updateWorkoutActivity(distanceString: String?, paceString: String?, caloriesString: String?) {
-        let status: WorkoutLiveTrackerAttributes.ContentState = WorkoutLiveTrackerAttributes.ContentState(startDate: workoutStartDate,
+    public static func updateWorkoutActivity(timeString: String, distanceString: String?, paceString: String?, caloriesString: String?) {
+        let status: WorkoutLiveTrackerAttributes.ContentState = WorkoutLiveTrackerAttributes.ContentState(timeString: timeString,
                 distanceString: distanceString,
                 paceString: paceString,
                 caloriesString: caloriesString)
@@ -33,7 +31,7 @@ class LiveActivityHelper {
     }
 
     public static func stopWorkoutActivity() {
-        let status: WorkoutLiveTrackerAttributes.ContentState = WorkoutLiveTrackerAttributes.ContentState(startDate: Date.now)
+        let status: WorkoutLiveTrackerAttributes.ContentState = WorkoutLiveTrackerAttributes.ContentState(timeString: "")
 
         Task {
             await workoutActivity?.end(using: status, dismissalPolicy: .immediate)

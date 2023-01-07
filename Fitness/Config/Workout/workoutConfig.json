@@ -4,7 +4,6 @@
       "name": "aerobicExercises",
       "workouts": [
         {
-          "id": 0,
           "name": "walking",
           "usesLocation": true,
           "usesDistance": false,
@@ -12,7 +11,6 @@
           "activityType": 52
         },
         {
-          "id": 5,
           "name": "hiking",
           "usesLocation": true,
           "usesDistance": false,
@@ -20,7 +18,6 @@
           "activityType": 24
         },
         {
-          "id": 1,
           "name": "running",
           "usesLocation": true,
           "usesDistance": false,
@@ -28,7 +25,6 @@
           "activityType": 37
         },
         {
-          "id": 2,
           "name": "cycling",
           "usesLocation": true,
           "usesDistance": false,
@@ -36,7 +32,6 @@
           "activityType": 13
         },
         {
-          "id": 9,
           "name": "skating",
           "usesLocation": true,
           "usesDistance": false,
@@ -49,7 +44,6 @@
       "name": "anaerobicExercises",
       "workouts": [
         {
-          "id": 3,
           "name": "intervalTraining",
           "usesLocation": false,
           "usesDistance": false,
@@ -57,7 +51,6 @@
           "activityType": 63
         },
         {
-          "id": 4,
           "name": "strengthTraining",
           "usesLocation": false,
           "usesDistance": false,
@@ -70,7 +63,6 @@
       "name": "waterActivities",
       "workouts": [
         {
-          "id": 6,
           "name": "swimming",
           "usesLocation": false,
           "usesDistance": true,
@@ -83,7 +75,6 @@
       "name": "winterActivities",
       "workouts": [
         {
-          "id": 10,
           "name": "snowboarding",
           "usesLocation": true,
           "usesDistance": false,
@@ -96,7 +87,6 @@
       "name": "martialArts",
       "workouts": [
         {
-          "id": 8,
           "name": "boxing",
           "usesLocation": false,
           "usesDistance": false,
@@ -104,7 +94,6 @@
           "activityType": 8
         },
         {
-          "id": 7,
           "name": "kickboxing",
           "usesLocation": false,
           "usesDistance": false,

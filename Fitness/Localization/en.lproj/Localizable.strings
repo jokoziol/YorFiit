@@ -55,6 +55,8 @@
 "usedMemory" = "%1$@ of %2$@ used";
 "delete" = "Delete";
 "stopWorkout" = "Stop workout";
+"pauseWorkout" = "Pause workout";
+"resumeWorkout" = "Resume workout";
 "reset" = "Reset";
 "version" = "Version: %1$@";
 "user" = "User";

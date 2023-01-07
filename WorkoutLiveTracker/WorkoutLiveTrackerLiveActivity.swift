@@ -11,11 +11,8 @@ struct WorkoutLiveTrackerLiveActivity: Widget {
         } dynamicIsland: { context in
             DynamicIsland {
 
-                DynamicIslandExpandedRegion(.leading) {
-                    Text(context.state.startDate, style: .timer).font(.title.bold())
-                }
-                DynamicIslandExpandedRegion(.trailing) {
-                    Text("\(context.attributes.name)").font(.title.bold())
+                DynamicIslandExpandedRegion(.center) {
+                    Text(context.state.timeString).font(.largeTitle.bold())
                 }
                 DynamicIslandExpandedRegion(.bottom) {
 
@@ -35,7 +32,7 @@ struct WorkoutLiveTrackerLiveActivity: Widget {
                         }
                     }
 
-                    Spacer().frame(height: 16.0)
+                    Spacer().frame(height: 24.0)
                 }
             } compactLeading: {
                 Image(systemName: "figure.walk")

@@ -12,10 +12,10 @@ struct WorkoutLiveTrackerView: View {
             Spacer().frame(height: 8.0)
 
             HStack {
-                Text(context.state.startDate, style: .timer).font(.title.bold())
+                Text(context.state.timeString).font(.title.bold())
+                Spacer()
                 Text("\(context.attributes.name)").font(.title.bold())
             }
-
 
             GeometryReader { geometryProxy in
                 HStack {

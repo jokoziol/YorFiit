@@ -3,31 +3,31 @@ import Foundation
 class WorkoutType {
 
     //MARK: -
-    class func getTemporaryWorkoutType() -> Int {
+    class func getTemporaryWorkoutType() -> String? {
         guard UserDefaults.standard.object(forKey: StorageKeys.temporaryWorkoutType.rawValue) != nil else {
-            return -1
+            return nil
         }
 
-        return UserDefaults.standard.getDecryptedInteger(StorageKeys.temporaryWorkoutType.rawValue)
+        return UserDefaults.standard.getDecrypted(StorageKeys.temporaryWorkoutType.rawValue)
     }
 
-    class func persistTemporaryWorkoutType(workoutType: Int) {
+    class func persistTemporaryWorkoutType(workoutType: String) {
         UserDefaults.standard.persistEncrypted(workoutType, forKey: StorageKeys.temporaryWorkoutType.rawValue)
     }
 
     //MARK: -
 
-    class func getName(type: Int) -> String? {
+    class func getName(type: String?) -> String? {
         return getWorkout(type: type)?.name.localized()
     }
 
-    class func getWorkout(type: Int) -> Workout? {
-        if type == -1 || type > (WorkoutConfig.shared.workouts.count) - 1 {
+    class func getWorkout(type: String?) -> Workout? {
+        if type == nil {
             return nil
         }
 
         for item in WorkoutConfig.shared.workouts {
-            if item.id == type {
+            if item.name == type {
                 return item
             }
         }
@@ -37,15 +37,15 @@ class WorkoutType {
 
     //MARK: -
 
-    class func getWorkoutType(id: String) -> Int {
+    class func getWorkoutType(id: String) -> String? {
         guard UserDefaults.standard.object(forKey: StorageKeys.saveWorkoutType.rawValue + id) != nil else {
-            return -1
+            return nil
         }
 
-        return UserDefaults.standard.getDecryptedInteger(StorageKeys.saveWorkoutType.rawValue + id)
+        return UserDefaults.standard.getDecrypted(StorageKeys.saveWorkoutType.rawValue + id)
     }
 
-    class func persistWorkoutType(type: Int, _ id: String) {
+    class func persistWorkoutType(type: String, _ id: String) {
         UserDefaults.standard.persistEncrypted(type, forKey: StorageKeys.saveWorkoutType.rawValue + id)
     }
 }

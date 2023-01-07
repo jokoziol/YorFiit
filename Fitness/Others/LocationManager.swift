@@ -13,7 +13,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     public func startUpdating() {
         removeAll()
 
-        if !WorkoutDistance.shouldDisplayDistance(workoutType: WorkoutInformation.workout?.type ?? -1) && !WorkoutDistance.shouldDisplaySwimLaps(workoutType: WorkoutInformation.workout?.type ?? -1) {
+        if !WorkoutDistance.shouldDisplayDistance(workoutType: WorkoutInformation.workout?.type ?? nil) && !WorkoutDistance.shouldDisplaySwimLaps(workoutType: WorkoutInformation.workout?.type ?? nil) {
             return
         }
 

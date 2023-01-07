@@ -4,7 +4,7 @@ import ActivityKit
 struct WorkoutLiveTrackerAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
-        var startDate: Date
+        var timeString: String
 
         var distanceString: String?
         var paceString: String?

@@ -35,11 +35,11 @@ class WorkoutDistance {
         return UserDefaults.standard.getDecryptedDouble(StorageKeys.saveWorkoutDistance.rawValue + id)
     }
 
-    class func shouldDisplayDistance(workoutType: Int) -> Bool {
+    class func shouldDisplayDistance(workoutType: String?) -> Bool {
         return WorkoutType.getWorkout(type: workoutType)?.usesLocation ?? false
     }
 
-    class func shouldDisplaySwimLaps(workoutType: Int) -> Bool {
+    class func shouldDisplaySwimLaps(workoutType: String?) -> Bool {
         return WorkoutType.getWorkout(type: workoutType)?.usesDistance ?? false
     }
 

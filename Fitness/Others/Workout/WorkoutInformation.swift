@@ -5,7 +5,7 @@ class WorkoutInformation {
 
     public static var workout: WorkoutHelper?
 
-    class func startWorkout(workoutType: Int) {
+    class func startWorkout(workoutType: String) {
 
         workout = WorkoutHelper(startDate: Date(), type: workoutType)
 
@@ -17,12 +17,12 @@ class WorkoutInformation {
 
         workout?.endDate = Date()
 
-        let timeDifference: Int = Int(workout?.endDate?.timeIntervalSince(workout?.startDate ?? Date()) ?? 0)
+        let timeDifference: Int = Int(workout?.endDate?.timeIntervalSince(workout?.startDate ?? Date()) ?? 0) - (workout?.pausedWorkoutTime ?? 0)
 
         WorkoutTime.persistDailyTime(timeInSeconds: timeDifference)
         WorkoutDistance.persistDailyDistance(distanceInMeters: workout?.distance ?? 0.0)
 
-        let coordinates: [CLLocationCoordinate2D]? = !WorkoutDistance.shouldDisplaySwimLaps(workoutType: workout?.type ?? -1) ? workout?.coordinateList : nil
+        let coordinates: [CLLocationCoordinate2D]? = !WorkoutDistance.shouldDisplaySwimLaps(workoutType: workout?.type ?? nil) ? workout?.coordinateList : nil
         let workoutItem: WorkoutItem? = workout?.getWorkoutItem()
 
         workout = nil
@@ -41,7 +41,7 @@ class WorkoutInformation {
 
         WorkoutTime.persistTemporaryTime(timeInSeconds: workout.timeInSeconds)
         WorkoutDistance.persistTemporaryDistance(distanceInMeters: workout.distanceInMeters)
-        WorkoutType.persistTemporaryWorkoutType(workoutType: workout.type)
+        WorkoutType.persistTemporaryWorkoutType(workoutType: workout.type!)
 
         WorkoutLocation.deleteCoordinates(id: "")
         WorkoutLocation.persistCoordinates(coordinates: workoutCoordinates, id: "")
@@ -53,7 +53,7 @@ class WorkoutInformation {
 
         WorkoutTime.persistTime(timeInSeconds: workout.timeInSeconds, workoutId)
         WorkoutDistance.persistDistance(distanceInMeters: workout.distanceInMeters, workoutId)
-        WorkoutType.persistWorkoutType(type: workout.type, workoutId)
+        WorkoutType.persistWorkoutType(type: workout.type!, workoutId)
         WorkoutLocation.persistLocation(locationName: workout.placeNames ?? "", workoutId)
 
         KeychainService.persist(service: StorageKeys.workoutKeys.rawValue, account: workoutId, data: workoutId)

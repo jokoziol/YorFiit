@@ -32,28 +32,6 @@ let minutes: Int = 10
 The project was designed to make it easy as possible to add more workouts. To add more workouts edit this
 file: `Config/Workout/workoutConfig.json`.
 
-### Workout id
-
-Each workout must have a unique id. The id of each new workout is: `last workout id` + 1.
-
-Example: There are 2 workouts. Walking (id: 0) and running (id: 1). The new workout (cycling) gets the id 3.
-
-Here is a list of all workouts so far:
-
-|           Workout | ID  |
-|------------------:|-----|
-|           Walking | 0   |
-|           Running | 1   |
-|           Cycling | 2   |
-|              HIIT | 3   |
-| Strength Training | 4   |
-|            Hiking | 5   |
-|          Swimming | 6   |
-|        Kickboxing | 7   |
-|            Boxing | 8   |
-|           Skating | 9   |
-|      Snowboarding | 10  |
-
 ### Workout sections
 
 ```json
@@ -86,7 +64,7 @@ Here is a list of all workouts so far:
 }
 ```
 
-- `name` is displayed in the app. The name must be localized
+- `name` is displayed in the app. The name must be unique and localized
 - `usesLocation` calculates the distance in meters and returns a list of coordinates
 - `usesDistance` calculates the distance in meters and **not** returns a list of coordinates
 - `metValue` cannot be smaller then zero

@@ -17,7 +17,7 @@ struct ChooseWorkoutView: View {
 
                             ForEach(sectionItem.workouts) { workout in
                                 Button(workout.name.localized()) {
-                                    startWorkout(workoutId: workout.id)
+                                    startWorkout(workoutId: workout.name)
                                 }
                                         .foregroundColor(.primary)
                             }
@@ -36,7 +36,7 @@ struct ChooseWorkoutView: View {
         }
     }
 
-    private func startWorkout(workoutId: Int) {
+    private func startWorkout(workoutId: String) {
 
         WorkoutInformation.startWorkout(workoutType: workoutId)
         NotificationCenter.default.post(name: Notification.Name(rawValue: "startWorkout"), object: nil)

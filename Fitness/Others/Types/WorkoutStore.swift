@@ -22,7 +22,7 @@ class WorkoutStore: ObservableObject {
         for item in sortedList {
 
             let workoutTimeInSeconds: Int = WorkoutTime.getTime(id: item)
-            let workoutType: Int = WorkoutType.getWorkoutType(id: item)
+            let workoutType: String? = WorkoutType.getWorkoutType(id: item)
             let workoutDistanceInMeters: Double = WorkoutDistance.getDistance(id: item)
             let workoutCalories: Double = WorkoutCalories.getCalories(workoutType: workoutType, timeInSeconds: workoutTimeInSeconds, distanceInMeters: workoutDistanceInMeters)
             let startDate = Date(timeIntervalSince1970: Double(item) ?? 0.0)

@@ -27,6 +27,8 @@ struct HomeView: View {
     private let refreshPublisher: NotificationCenter.Publisher = NotificationCenter.default.publisher(for: NSNotification.Name("refresh"))
     private let enterForegroundPublisher: NotificationCenter.Publisher = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
 
+    private let columns = [GridItem(spacing: 0, alignment: .center), GridItem(spacing: 0, alignment: .center)]
+
     private let minBatteryLevel: Float = 30.0
 
     private var workoutTime: String {
@@ -44,7 +46,7 @@ struct HomeView: View {
     }
     private var temporaryWorkoutItemTwo: String {
 
-        let type: Int = WorkoutType.getTemporaryWorkoutType()
+        let type: String? = WorkoutType.getTemporaryWorkoutType()
 
         if WorkoutDistance.shouldDisplayDistance(workoutType: type) ||
                    WorkoutDistance.shouldDisplaySwimLaps(workoutType: type) {
@@ -56,7 +58,7 @@ struct HomeView: View {
     }
     private var temporaryWorkoutItemThree: String {
 
-        let type: Int = WorkoutType.getTemporaryWorkoutType()
+        let type: String? = WorkoutType.getTemporaryWorkoutType()
         let timeInSeconds: Int = WorkoutTime.getTemporaryTime()
         let distanceInMeters: Double = WorkoutDistance.getTemporaryDistance()
 
@@ -76,16 +78,19 @@ struct HomeView: View {
             VStack {
 
                 ScrollView {
-                    CardGroup(title: "time".localized(), text: workoutTime)
-                    CardGroup(title: "stepsTitle".localized(), text: homeObservableObject.workoutSteps)
-                    CardGroup(title: "distance".localized(), text: workoutDistance)
 
-                    if SettingsInformation.showHeartRate() {
-                        CardGroup(title: "heartRate".localized(), text: homeObservableObject.workoutHeartRate)
+                    LazyVGrid(columns: self.columns, spacing: 0) {
+                        CardGroup(title: "time".localized(), text: workoutTime)
+                        CardGroup(title: "stepsTitle".localized(), text: homeObservableObject.workoutSteps)
+                        CardGroup(title: "distance".localized(), text: workoutDistance)
+
+                        if SettingsInformation.showHeartRate() {
+                            CardGroup(title: "heartRate".localized(), text: homeObservableObject.workoutHeartRate)
+                        }
                     }
 
                     // Last workout view
-                    if SettingsInformation.showLastTraining() && WorkoutType.getTemporaryWorkoutType() != -1 {
+                    if SettingsInformation.showLastTraining() && WorkoutType.getTemporaryWorkoutType() != nil {
                         MapViewGroup(title: temporaryWorkoutName,
                                 itemOneText: temporaryWorkoutItemOne,
                                 itemTwoText: temporaryWorkoutItemTwo,

@@ -10,12 +10,18 @@ public struct CardView<Content>: View where Content: View {
 
     public var body: some View {
         VStack {
-            VStack {
-                content()
+
+            HStack {
+                Spacer()
+
+                VStack {
+                    content()
+                }
+
+                Spacer()
             }
                     .background(Color(UIColor.secondarySystemBackground))
         }
-                .cornerRadius(ScreenConfig.cornerRadius)
-                .frame(width: ScreenConfig.cardWidth, alignment: .center)
+                .cornerRadius(ScreenConfig.cornerRadius).padding(6.0)
     }
 }
