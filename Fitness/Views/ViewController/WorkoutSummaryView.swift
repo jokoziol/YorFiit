@@ -20,13 +20,26 @@ struct WorkoutSummaryView: View {
     private let workoutCalories: String
     private let workoutPace: String
     private let workoutAverageDistance: String
-    private var workoutPlaceNames: String
 
     // MARK: -
 
     init(_ workout: WorkoutItem, workoutCoordinates: [CLLocationCoordinate2D]) {
-        self.workout = workout
         self.workoutCoordinates = workoutCoordinates
+        
+        var workoutItemLocations: [WorkoutItemLocation] = []
+        
+        for item in workoutCoordinates{
+            workoutItemLocations.append(WorkoutItemLocation(latitude: Double(item.latitude), longitude: Double(item.longitude)))
+        }
+        
+        self.workout = WorkoutItem(workoutId: workout.workoutId,
+                                   placeNames: workout.placeNames,
+                                   startDate: workout.startDate,
+                                   type: workout.type,
+                                   timeInSeconds: workout.timeInSeconds,
+                                   calories: workout.calories,
+                                   distanceInMeters: workout.distanceInMeters,
+                                   locations: workoutItemLocations)
 
         self.workoutName = WorkoutType.getName(type: workout.type) ?? "--"
         self.workoutDistance = WorkoutDistance.getDistanceString(distanceInMeters: workout.distanceInMeters)
@@ -37,16 +50,14 @@ struct WorkoutSummaryView: View {
         self.workoutTime = WorkoutTime.getTimeString(timeInSeconds: workout.timeInSeconds)
 
         self.screenItemWidth = ScreenConfig().calculateWidthForEachItem(3)
-
-        self.workoutPlaceNames = WorkoutLocation.getLocation(id: workout.workoutId ?? "unknown")
     }
 
     var body: some View {
         NavigationView {
             VStack {
 
-                if self.workoutPlaceNames != "" {
-                    Text(self.workoutPlaceNames).frame(width: ScreenConfig.itemCardWidth, height: nil, alignment: .leading).lineLimit(2)
+                if self.workout.placeNames != nil {
+                    Text(self.workout.placeNames!).frame(width: ScreenConfig.itemCardWidth, height: nil, alignment: .leading).lineLimit(2)
                     Spacer().frame(width: nil, height: ScreenConfig.itemSpacing, alignment: .leading)
                 }
 
@@ -112,7 +123,7 @@ struct WorkoutSummaryView: View {
         DispatchQueue.global().async {
             HealthStore.persistWorkout(workout)
 
-            WorkoutInformation.persistWorkout(workout, workoutCoordinates)
+            WorkoutInformation.persistWorkout(workout)
 
             self.workoutSaved = true
             self.workoutSaveInProgress = false

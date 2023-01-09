@@ -9,7 +9,7 @@ class WorkoutStore: ObservableObject {
 
         var workoutList = [String]()
 
-        for item in KeychainService.getAll(targetService: StorageKeys.workoutKeys.rawValue) {
+        for item in KeychainService.getAll(targetService: StorageKeys.workoutKey.rawValue) {
             if item != "" {
                 workoutList.append(item)
             }
@@ -20,21 +20,16 @@ class WorkoutStore: ObservableObject {
         }
 
         for item in sortedList {
-
-            let workoutTimeInSeconds: Int = WorkoutTime.getTime(id: item)
-            let workoutType: String? = WorkoutType.getWorkoutType(id: item)
-            let workoutDistanceInMeters: Double = WorkoutDistance.getDistance(id: item)
-            let workoutCalories: Double = WorkoutCalories.getCalories(workoutType: workoutType, timeInSeconds: workoutTimeInSeconds, distanceInMeters: workoutDistanceInMeters)
-            let startDate = Date(timeIntervalSince1970: Double(item) ?? 0.0)
-            let placeNames = WorkoutLocation.getLocation(id: item)
-
-            workoutItems.append(WorkoutItem(workoutId: item,
-                    placeNames: placeNames,
-                    startDate: startDate,
-                    type: workoutType,
-                    timeInSeconds: workoutTimeInSeconds,
-                    calories: workoutCalories,
-                    distanceInMeters: workoutDistanceInMeters))
+            
+            guard let json = KeychainService.load(service: StorageKeys.workoutKey.rawValue, account: item) else{
+                continue
+            }
+            
+            guard let workout = JsonHelper().toObject(type: WorkoutItem.self, json: json) else{
+                continue
+            }
+            
+            workoutItems.append(workout)
         }
     }
 

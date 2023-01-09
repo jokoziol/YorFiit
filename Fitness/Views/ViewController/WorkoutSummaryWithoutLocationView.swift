@@ -79,7 +79,7 @@ struct WorkoutSummaryWithoutLocationView: View {
     }
 
     private func persistWorkout() {
-        WorkoutInformation.persistWorkout(workout, nil)
+        WorkoutInformation.persistWorkout(workout)
 
         self.workoutSaved = true
 

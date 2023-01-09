@@ -83,6 +83,8 @@
 		670EAC90291794DC004EAD76 /* YorFiitLiveTracker.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 670EAC81291794DC004EAD76 /* YorFiitLiveTracker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		670EAC9529179767004EAD76 /* WorkoutLiveTrackerAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670EAC9429179767004EAD76 /* WorkoutLiveTrackerAttributes.swift */; };
 		670EAC9629179767004EAD76 /* WorkoutLiveTrackerAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670EAC9429179767004EAD76 /* WorkoutLiveTrackerAttributes.swift */; };
+		6715F153296AAE0A0065C15A /* WorkoutItemLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6715F152296AAE0A0065C15A /* WorkoutItemLocation.swift */; };
+		6715F155296AAEA20065C15A /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6715F154296AAEA20065C15A /* JsonHelper.swift */; };
 		67AD63D529140B9E0082B3CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67AD63D729140B9E0082B3CD /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -194,6 +196,8 @@
 		670EAC8B291794DC004EAD76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		670EAC8D291794DC004EAD76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		670EAC9429179767004EAD76 /* WorkoutLiveTrackerAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutLiveTrackerAttributes.swift; sourceTree = "<group>"; };
+		6715F152296AAE0A0065C15A /* WorkoutItemLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutItemLocation.swift; sourceTree = "<group>"; };
+		6715F154296AAEA20065C15A /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 		677C296D2916DDFC007351F9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		677C296F2916DDFC007351F9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		67AD63D329140B3A0082B3CD /* Fitness.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fitness.entitlements; sourceTree = "<group>"; };
@@ -305,6 +309,7 @@
 				249C2A5E5F18AB0CB05DAF23 /* LocationStore.swift */,
 				249C2B8C9A9FE9E973B672C6 /* WorkoutItem.swift */,
 				249C20B0248BC9C0570F1527 /* WorkoutStore.swift */,
+				6715F152296AAE0A0065C15A /* WorkoutItemLocation.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				249C27EE7B33D77BB525217B /* ErrorHandling.swift */,
 				249C209D6165A0873A4CF44A /* FormatError.swift */,
 				249C2CF02F1B594404E841F4 /* LocationManager.swift */,
+				6715F154296AAEA20065C15A /* JsonHelper.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -592,6 +598,7 @@
 				249C2C0A4EBE429DAB03E32E /* Geofencing.swift in Sources */,
 				249C29C4CC6DA2B896F6DEC8 /* LocationInformation.swift in Sources */,
 				249C2089D7B6F0C0CB313575 /* HapticFeedback.swift in Sources */,
+				6715F153296AAE0A0065C15A /* WorkoutItemLocation.swift in Sources */,
 				249C2CAA8C86424E0E29BDEF /* CardGroup.swift in Sources */,
 				249C22978F68AA89EC30E5EF /* TapableMapView.swift in Sources */,
 				249C2737F703345F3AC0FEA2 /* MapViewGroup.swift in Sources */,
@@ -604,6 +611,7 @@
 				249C2DB4D34B21503EF2C63E /* ProfileView.swift in Sources */,
 				249C2EFF803E66FCAFEFC26D /* SettingsView.swift in Sources */,
 				249C21A1FE58EB006B8B44C6 /* StartView.swift in Sources */,
+				6715F155296AAEA20065C15A /* JsonHelper.swift in Sources */,
 				249C288B903EFE6CD344CB3E /* StatisticsView.swift in Sources */,
 				249C2507CF192F20A322B4FB /* StorageView.swift in Sources */,
 				249C25548045DEA09FDD4773 /* UserSettingsView.swift in Sources */,
@@ -676,7 +684,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Fitness/Fitness.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Fitness/Preview Content\"";
 				DEVELOPMENT_TEAM = 624686MM8S;
 				ENABLE_PREVIEWS = YES;
@@ -694,7 +702,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.jokoziol.Fitness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -826,7 +834,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Fitness/Fitness.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Fitness/Preview Content\"";
 				DEVELOPMENT_TEAM = 624686MM8S;
 				ENABLE_PREVIEWS = YES;
@@ -844,7 +852,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.jokoziol.Fitness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

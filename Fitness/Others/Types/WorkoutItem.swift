@@ -1,6 +1,6 @@
 import Foundation
 
-struct WorkoutItem: Identifiable, Hashable {
+struct WorkoutItem: Identifiable, Hashable, Codable {
     let id = UUID()
     let workoutId: String?
     let placeNames: String?
@@ -9,4 +9,5 @@ struct WorkoutItem: Identifiable, Hashable {
     let timeInSeconds: Int
     let calories: Double
     let distanceInMeters: Double
+    let locations: [WorkoutItemLocation]?
 }

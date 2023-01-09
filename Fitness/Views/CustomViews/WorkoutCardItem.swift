@@ -86,7 +86,10 @@ struct WorkoutCardItem: View {
         self.workoutCoordinates.removeAll()
 
         DispatchQueue.global().async {
-            self.workoutCoordinates = WorkoutLocation.loadCoordinates(id: workoutItem.workoutId ?? "")
+            
+            for item: WorkoutItemLocation in self.workoutItem.locations ?? []{
+                self.workoutCoordinates.append(CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude))
+            }
 
             group.leave()
         }

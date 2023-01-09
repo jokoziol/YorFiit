@@ -24,7 +24,9 @@ enum StorageKeys: String {
 
     case timerStartTime = "timerStartTime"
 
-    case workoutKeys = "workoutKeys"
+    case workoutKeys = "workoutKeys" //TODO delete
+    
+    case workoutKey = "workoutKey"
 
     case locationKeys = "locationKeys"
 

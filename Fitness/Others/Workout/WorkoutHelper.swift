@@ -28,11 +28,12 @@ class WorkoutHelper {
         let calories: Double = WorkoutCalories.getCalories(workoutType: type, timeInSeconds: timeInSeconds, distanceInMeters: distance ?? 0.0)
 
         return WorkoutItem(workoutId: nil,
-                placeNames: placeNames,
-                startDate: startDate,
-                type: type,
-                timeInSeconds: timeInSeconds,
-                calories: calories,
-                distanceInMeters: distance ?? 0.0)
+                           placeNames: placeNames,
+                           startDate: startDate,
+                           type: type,
+                           timeInSeconds: timeInSeconds,
+                           calories: calories,
+                           distanceInMeters: distance ?? 0.0,
+                           locations: nil)
     }
 }

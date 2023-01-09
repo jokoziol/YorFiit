@@ -44,33 +44,31 @@ class WorkoutInformation {
         WorkoutType.persistTemporaryWorkoutType(workoutType: workout.type!)
 
         WorkoutLocation.deleteCoordinates(id: "")
-        WorkoutLocation.persistCoordinates(coordinates: workoutCoordinates, id: "")
+        WorkoutLocation.persistCoordinates(coordinates: workout.locations, id: "")
     }
 
-    class func persistWorkout(_ workout: WorkoutItem, _ workoutCoordinates: [CLLocationCoordinate2D]?) {
+    class func persistWorkout(_ workout: WorkoutItem) {
 
         let workoutId = String(workout.startDate.timeIntervalSince1970)
-
-        WorkoutTime.persistTime(timeInSeconds: workout.timeInSeconds, workoutId)
-        WorkoutDistance.persistDistance(distanceInMeters: workout.distanceInMeters, workoutId)
-        WorkoutType.persistWorkoutType(type: workout.type!, workoutId)
-        WorkoutLocation.persistLocation(locationName: workout.placeNames ?? "", workoutId)
-
-        KeychainService.persist(service: StorageKeys.workoutKeys.rawValue, account: workoutId, data: workoutId)
-
-        WorkoutLocation.persistCoordinates(coordinates: workoutCoordinates, id: workoutId)
+        
+        let workoutItem = WorkoutItem(workoutId: workoutId,
+                                      placeNames: workout.placeNames,
+                                      startDate: workout.startDate,
+                                      type: workout.type,
+                                      timeInSeconds: workout.timeInSeconds,
+                                      calories: workout.calories,
+                                      distanceInMeters: workout.distanceInMeters,
+                                      locations: workout.locations)
+        
+        guard let json = JsonHelper().toJson(type: workoutItem) else{
+            return
+        }
+        
+        KeychainService.persist(service: StorageKeys.workoutKey.rawValue, account: workoutId, data: json)
     }
 
     class func deleteWorkout(id: String) {
-
-        UserDefaults.standard.removeObject(forKey: StorageKeys.saveWorkoutTime.rawValue + id)
-        UserDefaults.standard.removeObject(forKey: StorageKeys.saveWorkoutDistance.rawValue + id)
-        UserDefaults.standard.removeObject(forKey: StorageKeys.saveWorkoutType.rawValue + id)
-        UserDefaults.standard.removeObject(forKey: StorageKeys.saveWorkoutLocation.rawValue + id)
-
-        KeychainService.delete(service: StorageKeys.workoutKeys.rawValue, account: id)
-
-        WorkoutLocation.deleteCoordinates(id: id)
+        KeychainService.delete(service: StorageKeys.workoutKey.rawValue, account: id)
     }
 
     public class func deleteTemporaryWorkout() {
