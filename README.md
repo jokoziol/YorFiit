@@ -2,6 +2,8 @@
 
 YorFiit is an iOS app for tracking workouts.
 
+[<img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg">](https://apps.apple.com/app/yorfiit/id1658278226?l=en)
+
 # Features
 
 - Encryption of all content stored in the app
