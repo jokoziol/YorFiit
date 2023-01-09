@@ -14,6 +14,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Select Xcode version
-        run: sudo xcode-select /Applications/Xcode_14.2.app
+        run: sudo xcode-select -switch /Applications/Xcode_14.2.app
       - name: Build
         run: xcodebuild -project 'Fitness.xcodeproj' -scheme YorFiit -destination 'platform=iOS Simulator,OS=latest,name=iPhone 14 Pro Max' -configuration CODE_SIGNING_ALLOWED=NO
